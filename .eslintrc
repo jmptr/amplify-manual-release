@@ -1,0 +1,45 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "plugins": ["@typescript-eslint", "prettier"],
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/camelcase": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "ignoreRestSiblings": true }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 100,
+        "ignorePattern": "^\\s*export|^\\s*const",
+        "ignoreTemplateLiterals": true,
+        "ignoreUrls": true
+      }
+    ],
+
+    // console rule is disabled because it's convenient to log to CloudWatch
+    "no-console": 0,
+    // disabled because TypeScript will detect undefined values
+    // enabling this rule will cause errors when using global types
+    // eg: types in a types.d.ts file
+    "no-undef": 0,
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+    "quotes": 0,
+    "space-before-function-paren": 0
+  }
+}
