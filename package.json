@@ -1,7 +1,6 @@
 {
   "name": "amplify-manual-release",
   "version": "1.0.0",
-  "private": true,
   "main": "dist/index.js",
   "bin": {
     "amplify-manual-release": "./dist/index.js"
