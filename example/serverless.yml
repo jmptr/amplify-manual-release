@@ -1,0 +1,25 @@
+service: amplify-manual-release-example
+
+provider:
+  name: aws
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'dev'}
+
+resources:
+  Resources:
+    AmplifyApp:
+      Type: AWS::Amplify::App
+      Properties:
+        Name: AmplifyManualReleaseReactApp
+
+    AmplifyBranch:
+      Type: AWS::Amplify::Branch
+      Properties:
+        AppId: !GetAtt AmplifyApp.AppId
+        BranchName: ${self:provider.stage}
+        EnableAutoBuild: false
+
+  Outputs:
+    AmplifyApp:
+      Value:
+        Ref: AmplifyApp

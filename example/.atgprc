@@ -1,0 +1,6 @@
+{
+  "appId": "AMPLIFY_APP_ID",
+  "branchName": "dev",
+  "inputFolder": "build",
+  "region": "us-east-1"
+}
