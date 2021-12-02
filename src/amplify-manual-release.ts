@@ -99,12 +99,12 @@ function waitJobToSucceed(
           console.log(`Job failed.${JSON.stringify(jobSummary)}`);
           clearTimeout(timeout);
           processing = false;
-          resolve();
+          resolve(false);
         }
         if (jobSummary.status === 'SUCCEED') {
           clearTimeout(timeout);
           processing = false;
-          resolve();
+          resolve(true);
         }
         await sleep(1000 * 3);
       }

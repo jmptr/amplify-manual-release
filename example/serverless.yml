@@ -11,6 +11,27 @@ resources:
       Type: AWS::Amplify::App
       Properties:
         Name: AmplifyManualReleaseReactApp
+        Description: Amplify Manual Release Example
+        CustomRules:
+          # requests for files that match this regex but don't exist will
+          # redirect to /index.html to accommodate pushState in JavaScript apps
+          - Source: '</^((?!\.(css|gif|ico|jpg|js|png|txt|svg|woff|ttf)$).)*$/>'
+            Target: /index.html
+            Status: 200
+        # other properties not used in this example:
+        # AccessToken - access token used to create webhook, usually git event
+        # AutoBranchCreationConfig - rules for creating this branch
+        # BasicAuthConfig:
+        #   EnableBasicAuth: Boolean
+        #   Password: String
+        #   Username: String
+        # BuildSpec - YML instructions for amplify to build UI
+        # CustomHeaders - Custom http headers for the app
+        # EnableBranchAutoDeletion - allows git events to delete branches
+        # EnvironmentVariables - values injected into build pipeline
+        # IAMServiceRole - IAM role assumed by the app
+        # OauthToken - oauth access token for webhook ops
+        # Repository - URI to git repository
 
     AmplifyBranch:
       Type: AWS::Amplify::Branch

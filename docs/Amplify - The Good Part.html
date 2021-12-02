@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Amplify - The Good Part.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+  background-color: #ebebeb;
+	color: #110c02; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="aws-amplify---the-good-part">AWS Amplify - The Good Part</h1>
+<p>How to quickly use the AWS Amplify console for hosting your single-page-application (SPA).</p>
+<ul>
+<li><a href="#aws-amplify---the-good-part">AWS Amplify - The Good Part</a>
+<ul>
+<li><a href="#who-this-is-for">Who this is for</a></li>
+<li><a href="#step-0---local-setup">Step 0 - Local Setup</a></li>
+<li><a href="#step-1---create-a-react-app">Step 1 - Create a react app</a></li>
+<li><a href="#step-2---create-the-aws-amplify-resources">Step 2 - Create the AWS Amplify resources</a></li>
+<li><a href="#step-3---deploy-the-spa-to-aws-amplify">Step 3 - Deploy the SPA to AWS Amplify</a></li>
+<li><a href="#making-it-easy">Making it Easy</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="who-this-is-for">Who this is for</h2>
+<p>The AWS Amplify console for hosting allows a SPA to circumvent the complicated resource graph (eg: S3 buckets, additional IAM policies, other Amplify resources). It also includes some sensible conventions for handling HTML <code>pushState</code> to send the browser redirects to <code>/index.html</code>.</p>
+<p>Ultimately, this guide is for developers that want to quickly create simple SPAs and have them hosted on AWS Amplify with as little friction as possible.</p>
+<h2 id="step-0---local-setup">Step 0 - Local Setup</h2>
+<p>Make sure the local environment has these features:</p>
+<ul>
+<li>AWS CLI. <code>aws --version</code></li>
+<li>NodeJS. <code>node --version</code></li>
+<li>Serverless. <code>sls --version</code></li>
+</ul>
+<h2 id="step-1---create-a-react-app">Step 1 - Create a react app</h2>
+<p>Start by creating the react app:</p>
+<p><code>npx create-react-app quick-react-spa</code></p>
+<p>Make sure it works:</p>
+<p><code>cd quick-react-spa</code></p>
+<p><code>npm run start</code></p>
+<p>The browser will open and should display a page that looks like this.</p>
+<p><img src="amp_manual_react_page.png" alt="SPA page"></p>
+<p>Build it:</p>
+<p><code>npm run build</code></p>
+<p>Note that the SPA output is in the <code>/build</code> folder.</p>
+<h2 id="step-2---create-the-aws-amplify-resources">Step 2 - Create the AWS Amplify resources</h2>
+<p>In order to host a SPA on AWS Amplify, one must first create the AWS Amplify App resource, and a Branch related to that Amplify App.</p>
+<pre class="hljs"><code><div><span class="hljs-attr">service:</span> <span class="hljs-string">quick-react-spa</span>
+
+<span class="hljs-attr">provider:</span>
+  <span class="hljs-attr">name:</span> <span class="hljs-string">aws</span>
+  <span class="hljs-attr">region:</span> <span class="hljs-string">${opt:region,</span> <span class="hljs-string">'us-east-1'</span><span class="hljs-string">}</span>
+  <span class="hljs-attr">stage:</span> <span class="hljs-string">${opt:stage,</span> <span class="hljs-string">'dev'</span><span class="hljs-string">}</span>
+
+<span class="hljs-attr">resources:</span>
+  <span class="hljs-attr">Resources:</span>
+    <span class="hljs-attr">AmplifyApp:</span>
+      <span class="hljs-attr">Type:</span> <span class="hljs-string">AWS::Amplify::App</span>
+      <span class="hljs-attr">Properties:</span>
+        <span class="hljs-attr">Name:</span> <span class="hljs-string">AmplifyManualReleaseReactApp</span>
+        <span class="hljs-attr">CustomRules:</span>
+          <span class="hljs-comment"># requests for files that match this regex but don't exist will</span>
+          <span class="hljs-comment"># redirect to /index.html to accommodate pushState in JavaScript apps</span>
+          <span class="hljs-bullet">-</span> <span class="hljs-attr">Source:</span> <span class="hljs-string">'&lt;/^((?!\.(css|gif|ico|jpg|js|png|txt|svg|woff|ttf)$).)*$/&gt;'</span>
+            <span class="hljs-attr">Target:</span> <span class="hljs-string">/index.html</span>
+            <span class="hljs-attr">Status:</span> <span class="hljs-number">200</span>
+
+    <span class="hljs-attr">AmplifyBranch:</span>
+      <span class="hljs-attr">Type:</span> <span class="hljs-string">AWS::Amplify::Branch</span>
+      <span class="hljs-attr">Properties:</span>
+        <span class="hljs-attr">AppId:</span> <span class="hljs-type">!GetAtt</span> <span class="hljs-string">AmplifyApp.AppId</span>
+        <span class="hljs-attr">BranchName:</span> <span class="hljs-string">${self:provider.stage}</span>
+        <span class="hljs-comment"># we will build the app ourselves</span>
+        <span class="hljs-attr">EnableAutoBuild:</span> <span class="hljs-literal">false</span>
+
+  <span class="hljs-attr">Outputs:</span>
+    <span class="hljs-attr">AmplifyApp:</span>
+      <span class="hljs-attr">Value:</span>
+        <span class="hljs-attr">Ref:</span> <span class="hljs-string">AmplifyApp</span>
+</div></code></pre>
+<p>Once the resources are created, note that the AWS Amplify Management Console will have appear to be waiting for deployment activity.</p>
+<p><img src="amp_new_branch.png" alt="new branch"></p>
+<h2 id="step-3---deploy-the-spa-to-aws-amplify">Step 3 - Deploy the SPA to AWS Amplify</h2>
+<p>Now that the Amplify Console is waiting for deployment activity, one can deploy the local SPA to the AWS Amplify Console using the AWS CLI.</p>
+<p>Here is a brief overview of the process.</p>
+<p><img src="amplify_workflow.png" alt="workflow"></p>
+<p>In order to create the deployment, the AWS CLI will need an <code>appId</code> and a <code>branchName</code>.</p>
+<p>Once the deployment is created, one can use the <code>zipUploadUrl</code> to <code>POST</code> a <code>ZIP</code> of the <code>SPA</code>.</p>
+<p>After the <code>ZIP</code> has been uploaded, the AWS Amplify Console will take a moment to mount the contents to the Amplify Branch.</p>
+<p>Note the AWS Amplify Management Console indicating a deployment has started:</p>
+<p><img src="amp_deployment_progress.png" alt="deployment"></p>
+<p>Note the AWS Amplify Management Console indicating the deployment is complete:</p>
+<p><img src="amp_deployment_done.png" alt="deployment"></p>
+<p>In short, the inputs needed are:</p>
+<ul>
+<li>a SPA <code>ZIP</code></li>
+<li>AWS Amplify <code>appId</code></li>
+<li>AWS Amplify <code>branchName</code></li>
+</ul>
+<h2 id="making-it-easy">Making it Easy</h2>
+<p>The <code>npm</code> package <code>amplify-manual-release</code> simplifies this process into a simple CLI.</p>
+<p>In the react spa, add the <code>amplify-manual-release</code> package.</p>
+<p><code>npm i -D amplify-manual-relase</code></p>
+<p>Then, in the root of the react spa, create a file <code>.atgprc</code> with the values for your AWS Amplify app.</p>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"appId"</span>: <span class="hljs-string">"AMPLIFY_APP_ID"</span>,
+  <span class="hljs-attr">"branchName"</span>: <span class="hljs-string">"AMPLIFY_APP_BRANCHNAME"</span>,
+  <span class="hljs-attr">"inputFolder"</span>: <span class="hljs-string">"build"</span>,
+  <span class="hljs-attr">"region"</span>: <span class="hljs-string">"us-east-1"</span>
+}
+</div></code></pre>
+<p>While all these values are optional, some of them may not change.</p>
+<p>Next, invoke the <code>amplify-manual-release</code> package by adding it to the <code>scripts</code> section of <code>package.json</code>.</p>
+<pre class="hljs"><code><div>{
+  ... other props
+  <span class="hljs-attr">"scripts"</span>: {
+    ... other props
+    <span class="hljs-attr">"release"</span>: <span class="hljs-string">"amplify-manual-release"</span>
+  }
+}
+</div></code></pre>
+<p>In the react app folder, one can invoke the <code>release</code> script.</p>
+<p><code>npm run release</code></p>
+<p>It's possible to override the values in <code>.atgprc</code> using the command line.</p>
+<p><code>npm run release -- --appId OVERRIDE_APP_ID --branchName OVERRIDE_BRANCH_NAME</code></p>
+<p>Using this package to deploy to AWS Amplify will yield the following output:</p>
+<pre class="hljs"><code><div>$ npm run release -- --appId MY_APP_ID
+---
+yarn run v1.22.10
+$ amplify-manual-release --appId MY_APP_ID
+Attempt to load config from .atgprc
+Found config. {
+  appId: 'AMPLIFY_APP_ID',
+  branchName: 'AMPLIFY_BRANCH_NAME',
+  inputFolder: 'build',
+  region: 'us-east-1'
+}
+Creating zip archive buffer
+Creating amplify deployment
+Created deployment: jobId: 1
+Creating http request to PUT archive in deployment URL
+Starting amplify deployment
+Demployment started, waiting for job to succeed
+job complete
+Done in 18.73s.
+</div></code></pre>
+<p>And now the app is available on AWS Amplify. Enjoy!</p>
+<!--  -->
+
+</body>
+</html>
